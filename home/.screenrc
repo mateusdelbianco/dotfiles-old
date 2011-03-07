@@ -1,0 +1,24 @@
+# don't display the copyright page
+startup_message off
+
+# UTF stuff
+setenv LC_CTYPE en_US.UTF-8
+defutf8 on
+
+# Obvious...
+startup_message off
+autodetach on
+vbell off
+shell -/bin/bash
+term xterm-color
+
+# My awesome hardstatus d-:
+hardstatus alwayslastline "%{=b kW}[ %{= Y}$USER @ %H %{b W}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{b W}][%{= Y} %l %{b W}][%{= Y} %d/%m %{Y}%c %{b W}]"
+
+# Double-check to force the focus to irssi after boot
+select 0
+
+# Use ALT-; and ALT-' to switch to previous and next window, respectively
+bindkey "^[;" prev
+bindkey "^['" next
+

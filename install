@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+require 'fileutils'
+
+Dir[File.expand_path("../home/.*", __FILE__)].each do |file|
+  next if file.end_with?(".")
+
+  file_to_be = File.expand_path(File.join("~", File.basename(file)))
+
+  puts "Copying #{File.basename(file)} to #{file_to_be}"
+
+  FileUtils.rm file_to_be rescue nil
+  FileUtils.cp file, file_to_be
+end
+
+system "brew update"
+system "brew install bash-completion git"
+
+puts "Finished."
