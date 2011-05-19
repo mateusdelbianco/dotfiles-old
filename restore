@@ -1,0 +1,15 @@
+#!/usr/bin/env ruby
+require 'fileutils'
+
+Dir[File.expand_path("../home/.*", __FILE__)].each do |file|
+  next if file.end_with?(".")
+
+  file_that_was = File.expand_path(File.join("~", File.basename(file)))
+
+  puts "Restoring #{File.basename(file_that_was)} to #{file}"
+
+  FileUtils.rm file rescue nil
+  FileUtils.cp file_that_was, file rescue nil
+end
+
+puts "Finished."
