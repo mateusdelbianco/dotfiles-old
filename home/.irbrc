@@ -32,7 +32,7 @@ end
 
 # lp any_object
 begin
-  require 'looksee/shortcuts' # sudo gem install looksee
+  require 'looksee' # sudo gem install looksee
 rescue LoadError
   puts "Looksee missing. To use it you need to install looksee gem."
 end
