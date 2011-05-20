@@ -26,4 +26,5 @@ end
 system "brew update"
 system "brew install bash-completion git"
 
+puts "you should install rvm, set the default ruby and then run: 'gem install activesupport awesome_print wirble hirb looksee sketches'"
 puts "Finished."
