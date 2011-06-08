@@ -10,6 +10,9 @@ export LC_CTYPE=en_US.UTF-8
 # rvm
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
+# nvm
+. ~/.nvm/nvm.sh
+
 # bash-completion
 if [ -f `brew --prefix`/etc/bash_completion ]; then
   . `brew --prefix`/etc/bash_completion
@@ -33,19 +36,16 @@ export VISUAL='mate -w'
 
 # __git_ps1
 alias __git_ps1="git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/(\1)/'"
-case "$TERM" in
-xterm*|rxvt*)
-    PS1="\[\e]0;\w \$(__git_ps1)\a\]\$> "
-    ;;
-*)
-    ;;
-esac
+
+# rvm
+# source "$rvm_path/contrib/ps1_functions"
+alias __rvm_ps1="$rvm_path/bin/rvm-prompt | grep '@' | sed 's/\(.*\)/(\1)/'"
 
 # bash prompt
 export HISTCONTROL=ignoredups
 export CLICOLOR=true
 export LSCOLORS=gxfxcxdxbxegedabagacad
-export PS1='\[\033[01;32m\]\w\[\e[m\]\[\e[1;34m\]$(__git_ps1 )\[\e[m\]\[\e[m\]\$ '
+export PS1='\[\e[01;32m\]\w\[\e[m\]\[\e[01;31m\]$(__rvm_ps1 )\[\e[m\]\[\e[1;34m\]$(__git_ps1 )\[\e[m\]\[\e[m\]\$ '
 
 # Misc
 export PAGER='less'
