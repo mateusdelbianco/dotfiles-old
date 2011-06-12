@@ -45,7 +45,7 @@ alias __rvm_ps1="$rvm_path/bin/rvm-prompt | grep '@' | sed 's/\(.*\)/(\1)/'"
 export HISTCONTROL=ignoredups
 export CLICOLOR=true
 export LSCOLORS=gxfxcxdxbxegedabagacad
-export PS1='\[\e[01;32m\]\w\[\e[m\]\[\e[01;31m\]$(__rvm_ps1 )\[\e[m\]\[\e[1;34m\]$(__git_ps1 )\[\e[m\]\[\e[m\]\$ '
+export PS1='\[\e[m\]\[\e[01;32m\]\w\[\e[m\]\[\e[01;31m\]$(__rvm_ps1 )\[\e[m\]\[\e[1;34m\]$(__git_ps1 )\[\e[m\]\[\e[m\]\$ '
 
 # Misc
 export PAGER='less'
