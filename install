@@ -23,8 +23,17 @@ Dir[File.expand_path("../home/*", __FILE__)].each do |file|
   FileUtils.cp file, file_to_be
 end
 
-system "brew update"
-system "brew install bash-completion git"
-
-puts "you should install rvm, set the default ruby and then run: 'gem install activesupport awesome_print i18n wirble hirb looksee sketches'"
-puts "Finished."
+puts 'You should run:'
+puts
+puts 'brew update OR sudo apt-get update'
+puts 'brew install bash-completion git OR sudo apt-get install git'
+puts 'bash < <(curl -s https://rvm.beginrescueend.com/install/rvm)'
+puts 'rvm install 1.8.7'
+puts 'rvm use 1.8.7 --default'
+puts 'gem install activesupport awesome_print i18n wirble hirb looksee sketches'
+puts
+puts 'git clone git://github.com/creationix/nvm.git ~/.nvm'
+puts 'nvm sync'
+puts 'nvm install v0.4.8'
+puts 'nvm alias default v0.4.8'
+puts 'npm install coffee-script'
