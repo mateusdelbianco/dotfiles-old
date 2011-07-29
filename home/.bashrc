@@ -122,6 +122,8 @@ if [[ -n "$PS1" ]] ; then
       . `brew --prefix`/etc/bash_completion
     fi
 
+    source /usr/local/Cellar/coreutils/8.12/aliases
+
     # PATH
     export PATH=/Users/mateus/.gem/ruby/1.8/bin:/usr/local/bin:/usr/local/sbin:$PATH
 
@@ -140,8 +142,8 @@ if [[ -n "$PS1" ]] ; then
 
     # Misc
     export PAGER='less'
+
     export CLICOLOR='yes'
-    export LSCOLORS=gxfxcxdxbxegedabagacad
     export INPUTRC='~/.inputrc'
 
     # Alias ###################################################################
@@ -150,7 +152,13 @@ if [[ -n "$PS1" ]] ; then
     alias vmrun='/Library/Application\ Support/VMware\ Fusion/vmrun'
     alias screen='screen -R'
 
+    alias ls='/usr/local/bin/gls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
 
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
 
   fi
 
@@ -164,7 +172,7 @@ fi
 
 # bash prompt
 alias __git_ps1="git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/(\1)/'"
-alias __rvm_ps1="$rvm_path/bin/rvm-prompt | grep '@' | sed 's/\(.*\)/(\1)/'"
+alias __rvm_ps1="$rvm_path/src/rvm/binscripts/rvm-prompt | grep '@' | sed 's/\(.*\)/(\1)/'"
 export PS1='\[\e[m\]\[\e[01;32m\]\w\[\e[m\]\[\e[01;31m\]$(__rvm_ps1 )\[\e[m\]\[\e[1;34m\]$(__git_ps1 )\[\e[m\]\[\e[m\]\$ '
 
 # Postgresql
