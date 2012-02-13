@@ -168,7 +168,7 @@ fi
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
 
 # nvm
-. ~/.nvm/nvm.sh
+# . ~/.nvm/nvm.sh
 
 # bash prompt
 alias __git_ps1="git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/(\1)/'"
