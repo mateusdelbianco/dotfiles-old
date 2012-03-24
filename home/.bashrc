@@ -122,7 +122,7 @@ if [[ -n "$PS1" ]] ; then
       . `brew --prefix`/etc/bash_completion
     fi
 
-    source /usr/local/Cellar/coreutils/8.14/aliases
+    source /usr/local/Cellar/coreutils/8.15/aliases
 
     # PATH
     export PATH=/Users/mateus/.gem/ruby/1.8/bin:/usr/local/bin:/usr/local/sbin:$PATH
