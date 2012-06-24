@@ -127,15 +127,6 @@ if [[ -n "$PS1" ]] ; then
     # PATH
     export PATH=/Users/mateus/.gem/ruby/1.8/bin:/usr/local/bin:/usr/local/sbin:$PATH
 
-    # Java
-    export JAVA_HOME="/System/Library/Frameworks/JavaVM.framework/Home/"
-
-    # AWS
-    export EC2_HOME="/usr/local/Cellar/ec2-api-tools/1.3-51254/jars"
-    export AWS_AUTO_SCALING_HOME="/usr/local/Cellar/as-api-tools/2009-05-15/"
-    export AWS_CLOUDWATCH_HOME="/usr/local/Cellar/cloud-watch/1.0.2.3/jars"
-    export EC2_AMITOOL_HOME="/usr/local/Cellar/ec2-ami-tools/1.3-45758/jars"
-
     # editor
     export EDITOR='mate -w'
     export VISUAL='mate -w'
