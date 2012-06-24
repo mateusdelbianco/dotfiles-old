@@ -1,4 +1,11 @@
 [alias]
+  cm = commit -m
+  st = status --short
+  co = checkout
+  logg = log --graph --color --decorate
+  loga = log --graph --color --pretty='format:%C(yellow)%h%C(cyan)%d %Creset  %s %C(blue)%an, %ar' --date-order --all
+  logt = log --graph --color --pretty='format:%C(yellow)%h%C(cyan)%d %Creset  %s %C(blue)%an, %ar' --date-order
+  last = cat-file commit HEAD
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
   w = whatchanged
 [github]
