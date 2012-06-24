@@ -171,4 +171,6 @@ export PS1='\[\e[m\]\[\e[01;32m\]\w\[\e[m\]\[\e[01;31m\]$(__rvm_ps1 )\[\e[m\]\[\
 alias pg_start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pg_stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 
+alias git-pull-boladao='git stash && git pull && git stash pop'
+
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting
