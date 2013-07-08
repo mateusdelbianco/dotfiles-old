@@ -10,10 +10,6 @@ export LC_CTYPE=en_US.UTF-8
 # If not running interactively, don't do anything
 if [[ -n "$PS1" ]] ; then
 
-  # don't put duplicate lines in the history. See bash(1) for more options
-  # ... or force ignoredups and ignorespace
-  HISTCONTROL=ignoredups:ignorespace
-
   # append to the history file, don't overwrite it
   shopt -s histappend
 
@@ -29,7 +25,6 @@ if [[ -n "$PS1" ]] ; then
     # ~/.bashrc: executed by bash(1) for non-login shells.
     # see /usr/share/doc/bash/examples/startup-files (in the package bash-doc)
     # for examples
-
 
     # make less more friendly for non-text input files, see lesspipe(1)
     [ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
@@ -83,9 +78,9 @@ if [[ -n "$PS1" ]] ; then
         #alias dir='dir --color=auto'
         #alias vdir='vdir --color=auto'
 
-        alias grep='grep --color=auto'
-        alias fgrep='fgrep --color=auto'
-        alias egrep='egrep --color=auto'
+        alias grep='ggrep --color=auto'
+        alias fgrep='gfgrep --color=auto'
+        alias egrep='gegrep --color=auto'
     fi
 
     # Add an "alert" alias for long running commands.  Use like so:
@@ -109,21 +104,21 @@ if [[ -n "$PS1" ]] ; then
     fi
   fi
 
-
   if [ `uname`  = Darwin ]; then
 
     # bash-completion
-    if [ -f `brew --prefix`/etc/bash_completion ]; then
-      . `brew --prefix`/etc/bash_completion
+    if [ -f $(brew --prefix)/share/bash-completion/bash_completion ]; then
+      . $(brew --prefix)/share/bash-completion/bash_completion
     fi
 
     # PATH
-    export PATH=/Users/mateus/.gem/ruby/1.8/bin:/usr/local/bin:/usr/local/sbin:$PATH
+    export PATH=/usr/local/bin:/usr/local/sbin:$PATH
     export PATH="$(brew --prefix coreutils)/libexec/gnubin:$PATH"
+    export GOPATH=/Users/mateus/Projects/go
 
     # editor
-    export EDITOR='mate -w'
-    export VISUAL='mate -w'
+    export EDITOR='subl -w'
+    export VISUAL='subl -w'
 
     # Misc
     export PAGER='less'
@@ -132,11 +127,6 @@ if [[ -n "$PS1" ]] ; then
     export INPUTRC='~/.inputrc'
 
     # Alias ###################################################################
-    alias cdd='cd - ' # goto last dir cd'ed from
-    alias ett='mate app config lib db public spec test Rakefile features'
-    alias vmrun='/Library/Application\ Support/VMware\ Fusion/vmrun'
-    alias screen='screen -R'
-
     alias ls='/usr/local/bin/gls --color=auto'
     #alias dir='dir --color=auto'
     #alias vdir='vdir --color=auto'
@@ -155,20 +145,31 @@ if [[ -n "$PS1" ]] ; then
 fi
 
 # rvm
-[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm"
+[[ -r $rvm_path/scripts/completion ]] && . $rvm_path/scripts/completion
 
 # nvm
 # . ~/.nvm/nvm.sh
 
 # bash prompt
 alias __git_ps1="git branch 2>/dev/null | grep '*' | sed 's/* \(.*\)/(\1)/'"
-alias __rvm_ps1="$rvm_path/src/rvm/binscripts/rvm-prompt | grep '@' | sed 's/\(.*\)/(\1)/'"
-export PS1='\[\e[m\]\[\e[01;32m\]\w\[\e[m\]\[\e[01;31m\]$(__rvm_ps1 )\[\e[m\]\[\e[1;34m\]$(__git_ps1 )\[\e[m\]\[\e[m\]\$ '
+alias __rvm_ps1="/Users/mateus/.rvm/bin/rvm-prompt | grep '@' | sed 's/\(.*\)/(\1)/'"
+alias __my_pwd="pwd | sed 's/\/Users\/mateus/~/'"
+# export PS1='\n\[\e[m\]\[\e[01;32m\]\w\[\e[m\]\[\e[01;31m\]$(__rvm_ps1 )\[\e[m\]\[\e[1;34m\]$(__git_ps1 )\[\e[m\]\[\e[m\]\n\$ '
+export   PS1='\n\[\e[m\]\[\e[01;32m\]$(__my_pwd)\[\e[m\]\[\e[01;31m\]$(__rvm_ps1 )\[\e[m\]\[\e[1;34m\]$(__git_ps1 )\[\e[m\]\[\e[m\]\n\$ '
 
 # Postgresql
 alias pg_start='pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start'
 alias pg_stop='pg_ctl -D /usr/local/var/postgres stop -s -m fast'
 
 alias git-pull-boladao='git stash && git pull && git stash pop'
+alias http-server='python -m SimpleHTTPServer'
+alias vip='/Users/mateus/Projects/globo/navbal/navbal -i'
+
+function wget_be_video {
+  wget $(sed -E 's/(.*)video\.(.*\.)?globo(i)?/\1video-be.\2globoi/' <(echo -n $1))
+}
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"
 
 PATH=$PATH:$HOME/.rvm/bin # Add RVM to PATH for scripting

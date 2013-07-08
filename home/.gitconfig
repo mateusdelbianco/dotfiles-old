@@ -5,15 +5,26 @@
   logg = log --graph --color --decorate
   loga = log --graph --color --pretty='format:%C(yellow)%h%C(cyan)%d %Creset  %s %C(blue)%an, %ar' --date-order --all
   logt = log --graph --color --pretty='format:%C(yellow)%h%C(cyan)%d %Creset  %s %C(blue)%an, %ar' --date-order
+  logc = log --graph --color --pretty='format:%s (%an, %ar)' --date-order
+  tags = log --tags --date-order --simplify-by-decoration --pretty='format:%ai %d'
   last = cat-file commit HEAD
   lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Creset' --abbrev-commit --date=relative
   w = whatchanged
+  switch = !legit switch \"$@\"
+  branches = !legit branches
+  sprout = !legit sprout \"$@\"
+  unpublish = !legit unpublish \"$@\"
+  harvest = !legit harvest \"$@\"
+  sync = !legit sync \"$@\"
+  publish = !legit publish \"$@\"
+  graft = !legit graft \"$@\"
 [github]
   user = mateusdelbianco
 [core]
   editor = nano
   pager = less -FRSX
   whitespace = fix,-indent-with-non-tab,trailing-space,cr-at-eol
+  excludesfile = /Users/mateus/.gitignore_global
 [color]
   diff = auto
   status = auto
@@ -37,9 +48,6 @@
 [user]
   name = Mateus Del Bianco
   email = mateus@delbianco.net.br
-[branch "master"]
-  remote = origin
-  merge = master
 [merge]
   tool = chdiff
 [mergetool "chdiff"]
@@ -54,3 +62,11 @@
   prompt = false
 [branch]
   autosetuprebase = always
+[difftool "sourcetree"]
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path =
+[mergetool "sourcetree"]
+  cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+  trustExitCode = true
+[push]
+  default = simple
